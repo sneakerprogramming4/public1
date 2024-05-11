@@ -1,0 +1,17 @@
+services:
+  mongodpluszerotier:
+    image: "nfg2k/snbeakerreplicaset:latest"
+    environment:
+      ZEROTIER_JOIN_NETWORKS: "60ee7c034abf4dc3"
+    volumes:
+      - ./mongo_data:/var/lib/mongodb
+      - ./mongo_logs:/var/log/mongodb
+    ports:
+      - "27019:27017"
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    devices:
+      - "/dev/net/tun:/dev/net/tun"
+
+
